@@ -11,7 +11,9 @@ class Rtags(CMakePackage):
 
     homepage = "https://github.com/Andersbakken/rtags/"
     url      = "https://andersbakken.github.io/rtags-releases/rtags-2.17.tar.gz"
+    git      = 'https://github.com/Andersbakken/rtags.git'
 
+    version('master', branch='master', depth=2, submodules=True)
     version('2.17', '95b24d7729678645a027d83be114d624')
     # version('2.12', '84988aaff27915a79d4b4b57299f9a51')  # no available
 
