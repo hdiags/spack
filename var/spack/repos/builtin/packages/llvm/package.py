@@ -542,6 +542,10 @@ class Llvm(CMakePackage):
             run_env.set('CC', join_path(self.spec.prefix.bin, 'clang'))
             run_env.set('CXX', join_path(self.spec.prefix.bin, 'clang++'))
 
+        if '+libcxx' in self.spec:
+            run_env.set('CXXFLAGS', '-I'+join_path(self.spec.prefix.include, 'c++', 'v1')+' -stdlib=libc++')
+            run_env.set('LDFLAGS', '-stdlib=libc++ -fuse-ld=lld -L'+self.spec.prefix.lib)
+
     def cmake_args(self):
         spec = self.spec
 
